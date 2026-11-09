@@ -59,17 +59,17 @@ IMAP_STORAGE_VERSION = 1
 # Checked in order; first match wins per region of text.
 AWB_KEYWORD_PATTERNS = [
     # "AWB: 1234567890" / "AWB 1234567890" / "AWB #1234567890" / "AWB:1234567890"
-    r"(?i)\bAWB[\s:#]*(?P<awb>\d{8,20})\b",
+    r"(?i)\bAWB[\s:#]*(?P<awb>[A-Za-z0-9]{8,30})\b",
     # "numar de urmarire: 1234567890" / "numar urmarire 1234567890"
-    r"(?i)\bnuma[a-z]*\s+(?:de\s+)?urmarire[\s:#]*(?P<awb>\d{8,20})\b",
+    r"(?i)\bnuma[a-z]*\s+(?:de\s+)?urmarire[\s:#]*(?P<awb>[A-Za-z0-9]{8,30})\b",
     # "tracking: 1234567890" / "tracking number: 1234567890"
-    r"(?i)\btracking[\s\w]*[\s:#]*(?P<awb>\d{8,20})\b",
+    r"(?i)\btracking[\s\w]*[\s:#]*(?P<awb>[A-Za-z0-9]{8,30})\b",
     # "colet: 1234567890" / "coletul 1234567890"
-    r"(?i)\bcolet(?:ul)?[\s:#]*(?P<awb>\d{8,20})\b",
+    r"(?i)\bcolet(?:ul)?[\s:#]*(?P<awb>[A-Za-z0-9]{8,30})\b",
     # "expediere: 1234567890" / "expedierea: 1234567890"
-    r"(?i)\bexpediere(?:a)?[\s:#]*(?P<awb>\d{8,20})\b",
+    r"(?i)\bexpediere(?:a)?[\s:#]*(?P<awb>[A-Za-z0-9]{8,30})\b",
     # "livrare: 1234567890" / "livrarea: 1234567890"
-    r"(?i)\blivrare(?:a)?[\s:#]*(?P<awb>\d{8,20})\b",
+    r"(?i)\blivrare(?:a)?[\s:#]*(?P<awb>[A-Za-z0-9]{8,30})\b",
 ]
 
 # Courier sender domain hints — if the email comes from one of these domains,

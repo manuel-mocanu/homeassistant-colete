@@ -398,7 +398,7 @@ class ImapAwbScanner:
             for match in pattern.finditer(text):
                 awb = match.group("awb")
                 # Basic sanity: AWBs should be 8-20 digits, not all zeros
-                if awb and not awb.startswith("00000") and len(awb) >= 8:
+                if awb and not awb.startswith("00000") and re.fullmatch(r"[A-Za-z0-9]{8,30}", awb):
                     found[awb] = None
 
         return list(found.keys())
