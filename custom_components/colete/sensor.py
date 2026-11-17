@@ -11,6 +11,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.util import slugify
 
 from .const import (
     CONF_AWB,
@@ -107,6 +108,16 @@ class ColeteSensor(CoordinatorEntity[ColeteDataUpdateCoordinator], SensorEntity)
         self._attr_unique_id = f"{entry.entry_id}_{sensor_type}"
         self._attr_name = sensor_config["name"]
         self._attr_icon = sensor_config["icon"]
+
+        # Predictable entity IDs, independent of the device's friendly name:
+        #   sensor.colet_<awb>          -> main status sensor
+        #   sensor.colet_<awb>_<type>   -> location / last_update / delivery
+        # Only applied on first registration; existing entities and IDs
+        # renamed by the user in the UI are preserved by the entity registry.
+        object_id = f"colet_{slugify(self._awb)}"
+        if sensor_type != SENSOR_TYPE_STATUS:
+            object_id = f"{object_id}_{sensor_type}"
+        self.entity_id = f"sensor.{object_id}"
 
     @property
     def icon(self) -> str:
