@@ -1,6 +1,6 @@
-# Colete - Integrare Home Assistant pentru Urmarirea Coletelor din Romania
+# FORK from Colete - Integrare Home Assistant pentru Urmarirea Coletelor din Romania
 
-[![GitHub Release](https://img.shields.io/github/v/release/emanuelbesliu/homeassistant-colete)](https://github.com/emanuelbesliu/homeassistant-colete/releases/latest)
+[![GitHub Release](https://img.shields.io/github/v/release/emanuelbesliu/homeassistant-colete)](https://github.com/manuel-mocanu/homeassistant-colete/releases/latest)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1+-blue.svg)](https://www.home-assistant.io/)
 [![License](https://img.shields.io/github/license/emanuelbesliu/homeassistant-colete)](LICENSE)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/emanuelbesliu)
