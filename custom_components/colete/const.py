@@ -60,6 +60,8 @@ IMAP_STORAGE_VERSION = 1
 AWB_KEYWORD_PATTERNS = [
     # "AWB: 1234567890" / "AWB 1234567890" / "AWB #1234567890" / "AWB:1234567890"
     r"(?i)\bAWB[\s:#]*(?P<awb>[A-Za-z0-9]{8,30})\b",
+    # "numarul 10X3LN559534147 a ajuns în easybox [locker name]"
+    r"(?i)\bnum(?:arul|ărul)[\s:#*]*(?P<awb>[A-Za-z0-9]{8,30})\b(?=[\s\S]{0,100}\ba\s+ajuns\s+(?:în|in)\s+easybox\b)",
     # "numar de urmarire: 1234567890" / "numar urmarire 1234567890"
     r"(?i)\bnuma[a-z]*\s+(?:de\s+)?urmarire[\s:#]*(?P<awb>[A-Za-z0-9]{8,30})\b",
     # "tracking: 1234567890" / "tracking number: 1234567890"

@@ -250,6 +250,22 @@ class TestAwbExtraction:
         awbs = ImapAwbScanner._extract_awbs(combined)
         assert awbs == ["1234567890"]
 
+    def test_fanbox_arrival_message(self):
+        """Test AWB extraction when sender and locker names vary."""
+        text = (
+            "Avem vești bune! Coletul tău cu AWB 7000184155100 de la "
+            "Expeditor diferit a ajuns la FANbox Locker diferit."
+        )
+        assert ImapAwbScanner._extract_awbs(text) == ["7000184155100"]
+
+    def test_easybox_arrival_message(self):
+        """Test alphanumeric AWB extraction independent of the store name."""
+        text = (
+            "Comanda ta **MAGAZIN DIFERIT** numarul "
+            "**10X3LN559534147** a ajuns în easybox Locker diferit."
+        )
+        assert ImapAwbScanner._extract_awbs(text) == ["10X3LN559534147"]
+
 
 # ============================================================
 # HTML to text conversion tests
@@ -494,8 +510,8 @@ class TestImapConstants:
         assert ENTRY_TYPE_IMAP == "imap"
 
     def test_awb_patterns_count(self):
-        """Test that all 6 AWB patterns are defined."""
-        assert len(AWB_KEYWORD_PATTERNS) == 6
+        """Test that all 7 AWB patterns are defined."""
+        assert len(AWB_KEYWORD_PATTERNS) == 7
 
     def test_awb_patterns_have_named_group(self):
         """Test that all AWB patterns have a named 'awb' capture group."""
